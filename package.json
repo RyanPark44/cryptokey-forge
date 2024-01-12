@@ -1,0 +1,10 @@
+{
+  "name": "cryptokey-forge",
+  "version": "0.1.0",
+  "description": "Random password generator",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Park",
+  "license": "ISC"
+}
