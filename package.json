@@ -3,8 +3,18 @@
   "version": "0.1.0",
   "description": "Random password generator",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
   },
   "author": "Ryan Park",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.11.0",
+    "parcel": "2.11.0",
+    "sass": "^1.69.7"
+  },
+  "dependencies": {
+    "core-js": "3.35.0",
+    "regenerator-runtime": "0.13.9"
+  }
 }
