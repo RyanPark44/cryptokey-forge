@@ -581,9 +581,9 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"aenu9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _modelJs = require("./model.js");
-var _parameterViewJs = require("../view/parameterView.js");
+var _parameterViewJs = require("./view/parameterView.js");
 var _parameterViewJsDefault = parcelHelpers.interopDefault(_parameterViewJs);
-var _keyViewJs = require("../view/keyView.js");
+var _keyViewJs = require("./view/keyView.js");
 var _keyViewJsDefault = parcelHelpers.interopDefault(_keyViewJs);
 const controlGenerateKey = function() {
     // 1. get key parameters
@@ -598,7 +598,7 @@ const init = function() {
 };
 init();
 
-},{"./model.js":"Y4A21","../view/parameterView.js":"dVAeq","../view/keyView.js":"8yU1J","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Y4A21":[function(require,module,exports) {
+},{"./model.js":"Y4A21","./view/parameterView.js":"azuYv","./view/keyView.js":"iV8oU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Y4A21":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
@@ -609,25 +609,25 @@ const state = {
     characterSet: {
         alphabet: true,
         numbers: true,
-        specials: true
+        symbols: true
     }
 };
 /**
- * Create an array of allowable character
+ * Create an array of allowable characters
  *
  * Return: array of allowable characters
- */ const getAllowedCharacter = function() {
+ */ const getAllowedCharacters = function() {
     const allowedChars = [];
     if (state.characterSet.alphabet) "abcdefghijklmnpqrstuvwxzy".split("").forEach((char)=>allowedChars.push(char) && allowedChars.push(char.toUpperCase()));
     if (state.characterSet.numbers) "1234567890".split("").forEach((num)=>allowedChars.push(num));
-    if (state.characterSet.specials) "!@#$%^&*()[]{}/|".split("").forEach((char)=>allowedChars.push(char));
+    if (state.characterSet.symbols) "!@#$%^&*()[]{}/|".split("").forEach((char)=>allowedChars.push(char));
     return allowedChars;
 };
 const randomString = function(newCharacterSet) {
     // 1. Set allowable characters in state
     state.characterSet = newCharacterSet;
     // 2. Get allowable character array
-    const allowedChars = getAllowedCharacter();
+    const allowedChars = getAllowedCharacters();
     // 3. Generate random key with character set
     const randomKey = [];
     const charSetLength = allowedChars.length;
@@ -666,7 +666,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"dVAeq":[function(require,module,exports) {
+},{}],"azuYv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
@@ -680,7 +680,7 @@ class paramViewCl extends (0, _viewDefault.default) {
         return {
             alphabet: checkboxes[0].checked,
             numbers: checkboxes[1].checked,
-            specials: checkboxes[2].checked
+            symbols: checkboxes[2].checked
         };
     }
     addHandlerGenerate(handlerFunction) {
@@ -690,7 +690,7 @@ class paramViewCl extends (0, _viewDefault.default) {
 }
 exports.default = new paramViewCl();
 
-},{"./view":"bx4GI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bx4GI":[function(require,module,exports) {
+},{"./view":"4wVyX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4wVyX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class ViewCl {
@@ -706,21 +706,25 @@ class ViewCl {
 }
 exports.default = ViewCl;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8yU1J":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iV8oU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
 class keyViewCl extends (0, _viewDefault.default) {
-    _parentElement = document.querySelector(".key__display");
+    _parentElement = document.querySelector(".key__input__container");
     _generateMarkup(key) {
         return `
-        <input type="text" value="${key}"/> 
+        <input
+          type="text"
+          class="p-1 w-full bg-[#2D283E]"
+          value="${key}"
+        />
     `;
     }
 }
 exports.default = new keyViewCl();
 
-},{"./view":"bx4GI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["f0HGD","aenu9"], "aenu9", "parcelRequire83d1")
+},{"./view":"4wVyX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["f0HGD","aenu9"], "aenu9", "parcelRequire83d1")
 
 //# sourceMappingURL=index.e37f48ea.js.map

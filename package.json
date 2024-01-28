@@ -4,14 +4,17 @@
   "description": "Random password generator",
   "scripts": {
     "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html"
+    "build": "parcel build ./src/index.html",
+    "build-css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "author": "Ryan Park",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.11.0",
     "parcel": "2.11.0",
-    "sass": "^1.69.7"
+    "prettier": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1"
   },
   "dependencies": {
     "core-js": "3.35.0",

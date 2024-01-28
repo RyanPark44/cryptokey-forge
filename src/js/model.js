@@ -4,16 +4,16 @@ export const state = {
   characterSet: {
     alphabet: true,
     numbers: true,
-    specials: true,
+    symbols: true,
   },
 };
 
 /**
- * Create an array of allowable character
+ * Create an array of allowable characters
  *
  * Return: array of allowable characters
  */
-const getAllowedCharacter = function () {
+const getAllowedCharacters = function () {
   const allowedChars = [];
   if (state.characterSet.alphabet)
     "abcdefghijklmnpqrstuvwxzy"
@@ -24,7 +24,7 @@ const getAllowedCharacter = function () {
       );
   if (state.characterSet.numbers)
     "1234567890".split("").forEach((num) => allowedChars.push(num));
-  if (state.characterSet.specials)
+  if (state.characterSet.symbols)
     "!@#$%^&*()[]{}/|".split("").forEach((char) => allowedChars.push(char));
   return allowedChars;
 };
@@ -36,7 +36,7 @@ export const randomString = function (newCharacterSet) {
   // 1. Set allowable characters in state
   state.characterSet = newCharacterSet;
   // 2. Get allowable character array
-  const allowedChars = getAllowedCharacter();
+  const allowedChars = getAllowedCharacters();
 
   // 3. Generate random key with character set
   const randomKey = [];

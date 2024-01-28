@@ -13,7 +13,7 @@ class paramViewCl extends ViewCl {
     return {
       alphabet: checkboxes[0].checked,
       numbers: checkboxes[1].checked,
-      specials: checkboxes[2].checked,
+      symbols: checkboxes[2].checked,
     };
   }
 

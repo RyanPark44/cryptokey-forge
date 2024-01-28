@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -6,27 +6,54 @@
     <title>CryptoKey Forge</title>
     <!-- Add your CSS links or stylesheets here -->
     <script src="/index.e37f48ea.js" defer=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
     <!-- Example: <link rel="stylesheet" href="styles.css"> -->
-    <link rel="stylesheet" href="/index.b10d73a7.css">
+    <link href="/index.1568f793.css" rel="stylesheet">
   </head>
-  <body>
-    <div class="content">
-      <!-- Your content goes here -->
-      <div class="title">
-        <h1>CryptoKey Forge</h1>
-      </div>
-      <div class="key__display">
-        <input type="text">
-      </div>
-      <div class="key__parameters">
-        <button class="btn generate--btn">Generate</button>
-        <input id="characters" value="" type="checkbox">
-        <label>Characters</label>
-        <input id="numbers" value="" type="checkbox"> <label>Numbers</label>
-        <input id="specials" value="" type="checkbox">
-        <label>Special Characters</label>
+  <body class="bg-[#2D283E]">
+    <div class="page__container flex max-w-screen-sm m-auto mt-32 font-['Rubik']">
+      <div class="content grow grid grid-cols-1 gap-2.5 border-solid border-2 border-gray-400">
+        <div class="title">
+          <h1 class="text-6xl text-[#D1D7E0]">CRYPTO-KEY FORGE</h1>
+        </div>
+        <div class="key__display flex flex-col h-56 content-end p-2 border-solid border-2 border-[#564f6f]">
+          <div class="previous__key__constainer grow grid grid-cols-1 p-1 content-end text-[#564F6F]">
+            <p>> dfsfdjfksslj</p>
+            <p>> dfsfdjfksslj</p>
+          </div>
+          <div class="key__input__container text-[#D1D7E0] border-solid border-2 border-[#802bb1] ">
+            <input type="text" class="p-1 w-full bg-[#2D283E]">
+          </div>
+        </div>
+        <div class="key__parameters text-[#D1D7E0]">
+          <button class="btn generate--btn flex p-1 bg-[#802BB1]">
+            GENERATE KEY
+          </button>
+          <label class="flex">
+            <input id="characters" value="" type="checkbox" checked="">
+            Characters<p class="text-[#564F6F] ml-1.5"> [aAbBcC...]</p>
+          </label>
+          <label class="flex">
+            <input id="numbers" value="" type="checkbox" checked="">
+            Numbers<p class="text-[#564F6F] ml-1.5"> [1234...]</p>
+          </label>
+          <label class="flex">
+            <input id="symbols" value="" type="checkbox" checked="">
+            Symbols<p class="text-[#564F6F] ml-1.5"> [!@#$...]</p>
+          </label>
       </div>
     </div>
-    <footer></footer>
-  </body>
+    <footer class="absolute bottom-0 max-w-screen-sm">
+          <p class="text-[#564F6F]">
+            <strong class="text-[#802BB1]">Crypto-Key Forge</strong> employs
+            mathematical entropy to generate a randomized password that includes
+            numbers, letters, and symbols. The passwords produced by
+            <strong class="text-[#802BB1]">Crypto-Key Forge</strong> completely
+            arbitrary and do not get transmitted over the internet, ensuring the
+            utmost security throughout the password generation process.
+          </p>
+    </footer>
+  </div></body>
 </html>
