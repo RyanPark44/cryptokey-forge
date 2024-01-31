@@ -585,32 +585,49 @@ var _parameterViewJs = require("./view/parameterView.js");
 var _parameterViewJsDefault = parcelHelpers.interopDefault(_parameterViewJs);
 var _keyViewJs = require("./view/keyView.js");
 var _keyViewJsDefault = parcelHelpers.interopDefault(_keyViewJs);
-const controlGenerateKey = function() {
+var _oldKeyViewJs = require("./view/oldKeyView.js");
+var _oldKeyViewJsDefault = parcelHelpers.interopDefault(_oldKeyViewJs);
+const controlSubmitNewKey = function() {
+    // 2. update oldkey array
+    _modelJs.updateOldKeyArray();
+    //
+    controlGenerateNewKey();
+    // 5. render old keys
+    (0, _oldKeyViewJsDefault.default).render(_modelJs.state.oldKeys);
+};
+const controlGenerateNewKey = function() {
     // 1. get key parameters
     const keyParameters = (0, _parameterViewJsDefault.default).getKeyParameters();
-    // 2. generate key
+    // 3. generate new key
     _modelJs.randomString(keyParameters);
-    // 3. render key
+    // 4. render key
     (0, _keyViewJsDefault.default).render(_modelJs.state.key);
 };
 const init = function() {
-    (0, _parameterViewJsDefault.default).addHandlerGenerate(controlGenerateKey);
+    (0, _parameterViewJsDefault.default).addHandlerGenerate(controlSubmitNewKey);
+    (0, _parameterViewJsDefault.default).addHandlerRangeInputUpdate((0, _parameterViewJsDefault.default).updateRangeValue);
+    (0, _parameterViewJsDefault.default).addHandlerRangeInputUpdate(controlGenerateNewKey);
+    (0, _parameterViewJsDefault.default).updateRangeValue();
+    controlSubmitNewKey();
 };
 init();
 
-},{"./model.js":"Y4A21","./view/parameterView.js":"azuYv","./view/keyView.js":"iV8oU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Y4A21":[function(require,module,exports) {
+},{"./model.js":"Y4A21","./view/parameterView.js":"azuYv","./view/keyView.js":"iV8oU","./view/oldKeyView.js":"5Hgn5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Y4A21":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "randomString", ()=>randomString);
+parcelHelpers.export(exports, "updateOldKeyArray", ()=>updateOldKeyArray);
+var _configJs = require("./config.js");
 const state = {
     key: "",
-    length: 22,
+    keyLength: 22,
     characterSet: {
         alphabet: true,
         numbers: true,
         symbols: true
-    }
+    },
+    oldKeys: []
 };
 /**
  * Create an array of allowable characters
@@ -623,18 +640,31 @@ const state = {
     if (state.characterSet.symbols) "!@#$%^&*()[]{}/|".split("").forEach((char)=>allowedChars.push(char));
     return allowedChars;
 };
-const randomString = function(newCharacterSet) {
-    // 1. Set allowable characters in state
-    state.characterSet = newCharacterSet;
+const randomString = function(keyParameters) {
+    const { keyLength, ...characterSet } = keyParameters;
+    // 1. Set length and allowable characters in state
+    state.keyLength = +keyLength;
+    state.characterSet = characterSet;
     // 2. Get allowable character array
     const allowedChars = getAllowedCharacters();
     // 3. Generate random key with character set
     const randomKey = [];
     const charSetLength = allowedChars.length;
-    for(let i = 0; i < state.length; i++)randomKey.push(allowedChars.at(Math.floor(Math.random() * charSetLength)));
+    for(let i = 0; i < state.keyLength; i++)randomKey.push(allowedChars.at(Math.floor(Math.random() * charSetLength)));
     // 4. Set the current state key
     state.key = randomKey.join("");
 };
+const updateOldKeyArray = function() {
+    if (!state.key) return;
+    state.oldKeys.push(state.key);
+    if (state.oldKeys.length > (0, _configJs.OLD_KEYS_MAX)) state.oldKeys.shift();
+};
+
+},{"./config.js":"k5Hzs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k5Hzs":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "OLD_KEYS_MAX", ()=>OLD_KEYS_MAX);
+const OLD_KEYS_MAX = 10;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -674,18 +704,28 @@ var _viewDefault = parcelHelpers.interopDefault(_view);
 class paramViewCl extends (0, _viewDefault.default) {
     _parentElement = document.querySelector(".key__parameters");
     /**
-   * Get key parameters from form checkboxes
+   * Get key parameters from form inputParams
    */ getKeyParameters() {
-        const checkboxes = Array.from(this._parentElement.querySelectorAll("input"));
+        const inputParams = Array.from(this._parentElement.querySelectorAll("input"));
         return {
-            alphabet: checkboxes[0].checked,
-            numbers: checkboxes[1].checked,
-            symbols: checkboxes[2].checked
+            keyLength: inputParams[0].value,
+            alphabet: inputParams[1].checked,
+            numbers: inputParams[2].checked,
+            symbols: inputParams[3].checked
         };
+    }
+    updateRangeValue() {
+        const rangeValue = document.querySelector("#rangeValue");
+        const rangeInput = document.querySelector("#rangeInput");
+        rangeValue.textContent = rangeInput.value;
     }
     addHandlerGenerate(handlerFunction) {
         const btn = document.querySelector(".generate--btn");
         btn.addEventListener("click", handlerFunction);
+    }
+    addHandlerRangeInputUpdate(handlerFunction) {
+        const rangeInput = document.querySelector("#rangeInput");
+        rangeInput.addEventListener("input", handlerFunction);
     }
 }
 exports.default = new paramViewCl();
@@ -697,6 +737,7 @@ class ViewCl {
     _data;
     render(data) {
         const markup = this._generateMarkup(data);
+        if (!markup) return;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
     }
@@ -713,17 +754,39 @@ var _view = require("./view");
 var _viewDefault = parcelHelpers.interopDefault(_view);
 class keyViewCl extends (0, _viewDefault.default) {
     _parentElement = document.querySelector(".key__input__container");
+    selectKeyText() {
+        this._parentElement.select();
+    }
     _generateMarkup(key) {
         return `
         <input
           type="text"
-          class="p-1 w-full bg-[#2D283E]"
+          class="p-1 w-full select-all bg-[#2D283E]"
           value="${key}"
         />
     `;
     }
 }
 exports.default = new keyViewCl();
+
+},{"./view":"4wVyX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5Hgn5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _view = require("./view");
+var _viewDefault = parcelHelpers.interopDefault(_view);
+class oldKeysCl extends (0, _viewDefault.default) {
+    _parentElement = document.querySelector(".previous__key__container");
+    _generateMarkup(entries) {
+        if (entries.length === 0) return;
+        // Reversed array so that it would display correctly for user
+        const markup = entries.map((entry)=>{
+            return `
+      <p class="first-letter:text-[#802BB1]">> ${entry}</p>`;
+        }).reverse();
+        return markup.join("");
+    }
+}
+exports.default = new oldKeysCl();
 
 },{"./view":"4wVyX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["f0HGD","aenu9"], "aenu9", "parcelRequire83d1")
 

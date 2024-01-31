@@ -4,23 +4,33 @@ class paramViewCl extends ViewCl {
   _parentElement = document.querySelector(".key__parameters");
 
   /**
-   * Get key parameters from form checkboxes
+   * Get key parameters from form inputParams
    */
   getKeyParameters() {
-    const checkboxes = Array.from(
-      this._parentElement.querySelectorAll("input")
+    const inputParams = Array.from(
+      this._parentElement.querySelectorAll("input"),
     );
     return {
-      alphabet: checkboxes[0].checked,
-      numbers: checkboxes[1].checked,
-      symbols: checkboxes[2].checked,
+      keyLength: inputParams[0].value,
+      alphabet: inputParams[1].checked,
+      numbers: inputParams[2].checked,
+      symbols: inputParams[3].checked,
     };
+  }
+  updateRangeValue() {
+    const rangeValue = document.querySelector("#rangeValue");
+    const rangeInput = document.querySelector("#rangeInput");
+    rangeValue.textContent = rangeInput.value;
   }
 
   addHandlerGenerate(handlerFunction) {
     const btn = document.querySelector(".generate--btn");
 
     btn.addEventListener("click", handlerFunction);
+  }
+  addHandlerRangeInputUpdate(handlerFunction) {
+    const rangeInput = document.querySelector("#rangeInput");
+    rangeInput.addEventListener("input", handlerFunction);
   }
 }
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,48 +12,56 @@
     <!-- Example: <link rel="stylesheet" href="styles.css"> -->
     <link href="/index.1568f793.css" rel="stylesheet">
   </head>
-  <body class="bg-[#2D283E]">
-    <div class="page__container flex max-w-screen-sm m-auto mt-32 font-['Rubik']">
-      <div class="content grow grid grid-cols-1 gap-2.5 border-solid border-2 border-gray-400">
-        <div class="title">
-          <h1 class="text-6xl text-[#D1D7E0]">CRYPTO-KEY FORGE</h1>
+  <body class="m-auto grid min-h-full max-w-screen-sm grid-cols-1 bg-[#2D283E] font-['Rubik']">
+    <div class="title mb-10 mt-auto">
+      <h1 class="text-center text-6xl text-[#D1D7E0]">CRYPTO-KEY FORGE</h1>
+    </div>
+    <div class="content__container grid auto-rows-max grid-cols-1 content-start gap-4">
+      <div class="key__display flex h-72 flex-col content-end border-4 border-solid border-[#564f6f] p-2">
+        <div class="previous__key__container flex h-full flex-col-reverse overflow-auto p-1 text-lg text-[#564F6F]"></div>
+        <div class="key__input__container border-2 border-solid border-[#802bb1] p-1 text-xl text-[#D1D7E0]">
+          <input type="text" class="w-full bg-[#2D283E]">
         </div>
-        <div class="key__display flex flex-col h-56 content-end p-2 border-solid border-2 border-[#564f6f]">
-          <div class="previous__key__constainer grow grid grid-cols-1 p-1 content-end text-[#564F6F]">
-            <p>> dfsfdjfksslj</p>
-            <p>> dfsfdjfksslj</p>
-          </div>
-          <div class="key__input__container text-[#D1D7E0] border-solid border-2 border-[#802bb1] ">
-            <input type="text" class="p-1 w-full bg-[#2D283E]">
-          </div>
+      </div>
+      <button class="btn generate--btn w-3/4 place-self-center rounded bg-[#802BB1] p-2 text-2xl font-bold text-[#D1D7E0] hover:bg-[#d1d7e0] hover:text-[#802bb1]">
+        GENERATE PASSWORD
+      </button>
+      <div class="key__parameters m-auto mb-10 grid w-3/4 grid-cols-1 gap-1 text-[#D1D7E0] accent-[#802bb1]">
+        <div class="range__picker">
+          <label for="rangeInput" class="flex text-sm font-medium text-[#D1D7E0]">Password length:</label>
+          <input type="range" id="rangeInput" name="rangeInput" min="8" max="64" value="24" class="m-auto flex w-full">
+
+          <!-- Optional: Display the selected value -->
+          <p class="mt-2 flex justify-center bg-[#d1d7e0] text-xl text-[#2d283e]">
+            <span id="rangeValue" class="bg-[#d1d7e0] text-xl text-[#2d283e]"></span>
+          </p>
         </div>
-        <div class="key__parameters text-[#D1D7E0]">
-          <button class="btn generate--btn flex p-1 bg-[#802BB1]">
-            GENERATE KEY
-          </button>
-          <label class="flex">
-            <input id="characters" value="" type="checkbox" checked="">
-            Characters<p class="text-[#564F6F] ml-1.5"> [aAbBcC...]</p>
-          </label>
-          <label class="flex">
-            <input id="numbers" value="" type="checkbox" checked="">
-            Numbers<p class="text-[#564F6F] ml-1.5"> [1234...]</p>
-          </label>
-          <label class="flex">
-            <input id="symbols" value="" type="checkbox" checked="">
-            Symbols<p class="text-[#564F6F] ml-1.5"> [!@#$...]</p>
-          </label>
+        <label class="mb-2 flex">
+          <input id="alphabet" value="" type="checkbox" checked="" class="mr-2 h-6 w-6">
+          ALPHABET
+          <p class="ml-1.5 text-[#564F6F]">[aAbBcC...]</p>
+        </label>
+        <label class="mb-2 flex">
+          <input id="numbers" value="" type="checkbox" checked="" class="mr-2 h-6 w-6">
+          NUMBERS
+          <p class="ml-1.5 text-[#564F6F]">[1234...]</p>
+        </label>
+        <label class="mb-2 flex">
+          <input id="symbols" value="" type="checkbox" checked="" class="mr-2 h-6 w-6">
+          SYMBOLS
+          <p class="ml-1.5 text-[#564F6F]">[!@#$...]</p>
+        </label>
       </div>
     </div>
-    <footer class="absolute bottom-0 max-w-screen-sm">
-          <p class="text-[#564F6F]">
-            <strong class="text-[#802BB1]">Crypto-Key Forge</strong> employs
-            mathematical entropy to generate a randomized password that includes
-            numbers, letters, and symbols. The passwords produced by
-            <strong class="text-[#802BB1]">Crypto-Key Forge</strong> completely
-            arbitrary and do not get transmitted over the internet, ensuring the
-            utmost security throughout the password generation process.
-          </p>
+    <footer class="mt-auto">
+      <p class="text-[#564F6F]">
+        <strong class="text-[#802BB1]">Crypto-Key Forge</strong> runs within
+        your web browser, ensuring that the password creation process occurs
+        locally on your device rather than on a remote server. This enhances
+        privacy and security by keeping sensitive information within your
+        control.
+      </p>
     </footer>
-  </div></body>
+    <!--     </div> -->
+  </body>
 </html>

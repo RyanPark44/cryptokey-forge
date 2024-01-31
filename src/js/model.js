@@ -1,11 +1,14 @@
+import { OLD_KEYS_MAX } from "./config.js";
+
 export const state = {
   key: "",
-  length: 22,
+  keyLength: 22,
   characterSet: {
     alphabet: true,
     numbers: true,
     symbols: true,
   },
+  oldKeys: [],
 };
 
 /**
@@ -20,7 +23,7 @@ const getAllowedCharacters = function () {
       .split("")
       .forEach(
         (char) =>
-          allowedChars.push(char) && allowedChars.push(char.toUpperCase())
+          allowedChars.push(char) && allowedChars.push(char.toUpperCase()),
       );
   if (state.characterSet.numbers)
     "1234567890".split("").forEach((num) => allowedChars.push(num));
@@ -32,19 +35,33 @@ const getAllowedCharacters = function () {
 /**
  * Generate random string based on state.characterset
  */
-export const randomString = function (newCharacterSet) {
-  // 1. Set allowable characters in state
-  state.characterSet = newCharacterSet;
+export const randomString = function (keyParameters) {
+  const { keyLength, ...characterSet } = keyParameters;
+  // 1. Set length and allowable characters in state
+  state.keyLength = +keyLength;
+  state.characterSet = characterSet;
   // 2. Get allowable character array
   const allowedChars = getAllowedCharacters();
 
   // 3. Generate random key with character set
   const randomKey = [];
   const charSetLength = allowedChars.length;
-  for (let i = 0; i < state.length; i++) {
+  for (let i = 0; i < state.keyLength; i++) {
     randomKey.push(allowedChars.at(Math.floor(Math.random() * charSetLength)));
   }
 
   // 4. Set the current state key
   state.key = randomKey.join("");
+};
+
+/**
+ *  Update oldKeys Array with current key
+ *
+ *  Return: NULL
+ */
+export const updateOldKeyArray = function () {
+  if (!state.key) return;
+  state.oldKeys.push(state.key);
+
+  if (state.oldKeys.length > OLD_KEYS_MAX) state.oldKeys.shift();
 };
