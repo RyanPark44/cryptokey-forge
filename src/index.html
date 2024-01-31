@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CryptoKey Forge</title>
+    <title>Secure Pass Forge</title>
     <!-- Add your CSS links or stylesheets here -->
     <script type="module" src="./js/controller.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +19,7 @@
     class="m-auto grid min-h-full max-w-screen-sm grid-cols-1 bg-[#2D283E] font-['Rubik']"
   >
     <div class="title mb-10 mt-auto">
-      <h1 class="text-center text-6xl text-[#D1D7E0]">CRYPTO-KEY FORGE</h1>
+      <h1 class="text-center text-6xl text-[#D1D7E0]">SECURE PASS FORGE</h1>
     </div>
     <div
       class="content__container grid auto-rows-max grid-cols-1 content-start gap-4"
@@ -39,7 +39,7 @@
       <button
         class="btn generate--btn w-3/4 place-self-center rounded bg-[#802BB1] p-2 text-2xl font-bold text-[#D1D7E0] hover:bg-[#d1d7e0] hover:text-[#802bb1]"
       >
-        GENERATE PASSWORD
+        FORGE PASSWORD
       </button>
       <div
         class="key__parameters m-auto mb-10 grid w-3/4 grid-cols-1 gap-1 text-[#D1D7E0] accent-[#802bb1]"
@@ -61,14 +61,10 @@
           />
 
           <!-- Optional: Display the selected value -->
-          <p
-            class="mt-2 flex justify-center bg-[#d1d7e0] text-xl text-[#2d283e]"
-          >
-            <span
-              id="rangeValue"
-              class="bg-[#d1d7e0] text-xl text-[#2d283e]"
-            ></span>
-          </p>
+          <div
+            class="border-3 mt-2 flex justify-center border-solid border-[#802bb1] text-xl text-[#d1d7e0]"
+            id="rangeValue"
+          ></div>
         </div>
         <label class="mb-2 flex">
           <input
@@ -107,7 +103,7 @@
     </div>
     <footer class="mt-auto">
       <p class="text-[#564F6F]">
-        <strong class="text-[#802BB1]">Crypto-Key Forge</strong> runs within
+        <strong class="text-[#802BB1]">Secure Pass Forge</strong> runs within
         your web browser, ensuring that the password creation process occurs
         locally on your device rather than on a remote server. This enhances
         privacy and security by keeping sensitive information within your
