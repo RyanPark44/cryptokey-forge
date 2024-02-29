@@ -1,10 +1,11 @@
-# cryptokey-forge
+# Secure Pass Forge
+Check it out here -> [https://securepassforge.com/](https://securepassforge.com/)
 
 ## Introduction
 
-Web app for generating random passwords.
+A web app for generating random passwords. Programmed with JavaScript, styled with Tailwind CSS, bundled with Parcel, and deployed statically in an AWS S3 bucket.
 
-## Getting Started
+## Development Environment Setup
 
 1. [Install Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 2. Verify Node.js and npm installation.
