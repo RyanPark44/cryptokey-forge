@@ -419,6 +419,10 @@ img, video {
   padding: .5rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .text-center {
   text-align: center;
 }
