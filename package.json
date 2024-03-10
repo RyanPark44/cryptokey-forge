@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "description": "Random password generator",
   "scripts": {
-    "start": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html",
-    "build-css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+    "start": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch | parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
   },
   "author": "Ryan Park",
   "license": "ISC",
