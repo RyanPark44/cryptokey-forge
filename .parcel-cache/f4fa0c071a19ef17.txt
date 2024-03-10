@@ -1,4 +1,4 @@
-11871
+11874
 51/home/ryan/repos/cryptokey-forge/tailwind.config.js1705948882508359760 0
 44/home/ryan/repos/cryptokey-forge/.prettierrc1706659560601854953 0
 63/home/ryan/repos/cryptokey-forge/cryptokey-forge-flowchart.html1705103987109939990 0
@@ -15,6 +15,9 @@
 55/home/ryan/repos/cryptokey-forge/dist/index.6c641cfe.js1710024541302739422 0
 56/home/ryan/repos/cryptokey-forge/dist/index.aa102f19.css1710024541302739422 0
 37/home/ryan/repos/cryptokey-forge/dist1710024541310739460 1
+59/home/ryan/repos/cryptokey-forge/.github/workflows/main.yml1710093339388947043 0
+50/home/ryan/repos/cryptokey-forge/.github/workflows1710093339384947013 1
+40/home/ryan/repos/cryptokey-forge/.github1710085504532699053 1
 78/home/ryan/repos/cryptokey-forge/node_modules/abortcontroller-polyfill/LICENSE1705075064383506533 0
 83/home/ryan/repos/cryptokey-forge/node_modules/abortcontroller-polyfill/src/utils.js1705075064847510033 0
 86/home/ryan/repos/cryptokey-forge/node_modules/abortcontroller-polyfill/src/polyfill.js1705075064771509460 0
@@ -2541,7 +2544,7 @@
 93/home/ryan/repos/cryptokey-forge/node_modules/core-js/modules/es.typed-array.last-index-of.js1705102839489706007 0
 77/home/ryan/repos/cryptokey-forge/node_modules/css-tree/lib/syntax/node/Nth.js1705075065779517064 0
 83/home/ryan/repos/cryptokey-forge/node_modules/core-js/proposals/reflect-metadata.js1705102840069710153 0
-32/home/ryan/repos/cryptokey-forge1710023131701567370 1
+32/home/ryan/repos/cryptokey-forge1710085504532699053 1
 82/home/ryan/repos/cryptokey-forge/node_modules/@parcel/core/src/summarizeRequest.js1705075065691516400 0
 93/home/ryan/repos/cryptokey-forge/node_modules/core-js/proposals/string-replace-all-stage-4.js1705102840181710953 0
 132/home/ryan/repos/cryptokey-forge/node_modules/@parcel/optimizer-htmlnano/node_modules/svgo/plugins/removeNonInheritableGroupAttrs.js1705075065227512900 0
